@@ -1,0 +1,224 @@
+body
+{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.code-editor
+{
+    box-sizing: border-box;
+    position: absolute;
+    width: 100vw;
+    z-index: 2;
+}
+a
+{
+    text-decoration: none; 
+    color: wheat;
+    transition: all 0.3s ease-in-out;
+    font-size: 25px;
+    cursor: pointer;
+}
+a:hover
+{
+    color: rgba(45, 178, 45, 0.745);
+}
+.code-bar
+{
+    
+    background-color: #242124;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around; 
+    padding: 0px 15px 0px 15px;
+    width: 97%;
+    height: 50px;
+
+}
+
+.code-bar .banner
+{
+    color: wheat;
+    display: flex;
+}
+.code-bar #lang
+{
+    color: burlywood;
+}
+
+.langSelector
+{
+    position: relative;
+    color: rgba(255, 255, 255, 0.85);
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    border-radius: 3px;
+    padding: 5px;
+    width: 120px;
+    /* appearance: none; */
+    background-color: transparent;
+    outline: 0;  
+    margin-right: auto;
+    font-size: 15px;
+    transform: translateY(2px);
+}
+
+.langSelector option
+{
+    background-color: #242124;
+}
+
+.code-bar .editor-setting
+{
+    margin-left: auto;
+    cursor: pointer;
+    
+}
+
+.setting-menu,.name-input
+{
+   width: 250px; 
+   border-radius: 5px;
+   color: whitesmoke;
+   background-color: #242124;
+   position: absolute;
+   right: 0;
+   padding: 10px;
+   transition: all 0.4s ease-in-out;
+   border: 1px solid rgba(255, 255, 255, 0.432);
+   transform: translateY(-200%);
+   opacity: 0;
+   z-index: 1;
+}
+.menu-active,.name-input-active
+{
+    opacity: 1;
+    transform: translateY(0%);
+}
+.setting
+{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-betweens;
+    align-items: center;
+    padding: 5px;
+}
+.setting p
+{
+    font-size: 16px;
+    margin-right: 20px;
+}
+.setting input
+{
+    color: white;
+    border: 1px solid #ececec;
+    height: 25px;
+    background-color: #242124;
+}
+.setting select
+{
+    color: white;
+    background-color: #242124;
+    height: 30px;
+    width: 60%;
+}
+.setting select option
+{
+    background-color: #242124;
+    width: 60%;
+}
+.editor-bg
+{
+    background: #242124;
+    padding: 5px 0 0px 15px;
+}
+#editor {
+    position: relative;
+    margin: 0;
+    width: 99%;
+    height: 75vh;
+    margin-top: 5px;
+    font-family: monospace;
+    font-variant-ligatures: no-common-ligatures;
+}
+
+
+#tc-editor,#op-editor{
+    margin: 0;
+    height: 100px;
+    font-family: monospace;
+    font-variant-ligatures: no-common-ligatures;
+    display: none;
+    overflow: hidden;
+    width: 50vw;
+    transform: translateX(15px);
+    position: absolute;
+}
+
+.bottom-bar
+{
+    justify-content: flex-end;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #242124;
+}
+
+.input-heading
+{
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: auto;
+    display: none;
+}
+.output-heading
+{
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-right: auto;
+    display: none;
+}
+
+
+.editor-btn {
+    align-items: center;
+    background-color: rgba(255, 99, 71, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0 10px;
+  transition: all 250ms;
+  width: 90px;
+  height: 30px;
+}
+.editor-btn:hover
+{
+    color: white;
+    filter: grayscale(50%);
+}
+
+.name-input
+{
+    top: 10%;
+    right: 40%;
+    display: flex;
+    gap: 10px;
+    height: 60px;
+}
+.name-input input
+{
+    font-size: 20px;
+    max-width: 70%;
+}
+.name-input btn
+{
+    width: 20%;
+    max-width: 40px;
+}

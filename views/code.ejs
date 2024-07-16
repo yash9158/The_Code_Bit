@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/code.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/3Cydf3t/logo.png">
+    <title>Editor | CodeLive</title>
+</head>
+<body style=" background-color: #242124;">  
+<!-- Editor -->
+<div class="header"> 
+    <h2>Code<span>Live</span></h2>   
+    <a href="/home"><i class="fas fa-home"></i></a>
+  </div>
+<div class="editor-container">
+  <div class="code-editor">
+    <div class="code-bar">
+    <!-- Language Selection -->
+    <select class="langSelector" data-live-search="true" name="Language" id="lang" onchange="changeLang()">
+      <option value="c" id="c">C</option>
+      <option value="cpp" id="cpp"selected>C++</option>
+      <option value="py" id="py">Python</option>
+      <option value="js" id="rb">Javascript</option>
+    </select>
+    <div class="banner">
+      <h2 id="filename"><%=name%></h2>
+      <h2>.</h2>
+      <h2 id="file-lang"><%=lang%></h2>
+    </div>
+    <div class="name-input">
+      <input name="filename">
+      <button class="btn" onclick="SaveFilename()">Done</button>
+    </div>
+    <a onclick = "editFilename()" style="margin-left : 15px;"><i class="fas fa-edit"></i></a>
+    <a onclick = "saveFile()" style="margin-left : 40px;"><i class="fas fa-save"></i></a>
+    <a class="editor-setting" onclick="toggleSettingMenu()"><i><svg style="color:rgba(255, 255, 255, 0.85); transform: translateY(5px) ;width: 15px; height: 15px;" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="gear" class="svg-inline--fa fa-gear" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M499.5 332c0-5.66-3.112-11.13-8.203-14.07l-46.61-26.91C446.8 279.6 448 267.1 448 256s-1.242-23.65-3.34-35.02l46.61-26.91c5.092-2.941 8.203-8.411 8.203-14.07c0-14.1-41.98-99.04-63.86-99.04c-2.832 0-5.688 .7266-8.246 2.203l-46.72 26.98C362.9 94.98 342.4 83.1 320 75.16V21.28c0-7.523-5.162-14.28-12.53-15.82C290.8 1.977 273.7 0 256 0s-34.85 1.977-51.48 5.461C197.2 7.004 192 13.76 192 21.28v53.88C169.6 83.1 149.1 94.98 131.4 110.1L84.63 83.16C82.08 81.68 79.22 80.95 76.39 80.95c-19.72 0-63.86 81.95-63.86 99.04c0 5.66 3.112 11.13 8.203 14.07l46.61 26.91C65.24 232.4 64 244 64 256s1.242 23.65 3.34 35.02l-46.61 26.91c-5.092 2.941-8.203 8.411-8.203 14.07c0 14.1 41.98 99.04 63.86 99.04c2.832 0 5.688-.7266 8.246-2.203l46.72-26.98C149.1 417 169.6 428.9 192 436.8v53.88c0 7.523 5.162 14.28 12.53 15.82C221.2 510 238.3 512 255.1 512s34.85-1.977 51.48-5.461C314.8 504.1 320 498.2 320 490.7v-53.88c22.42-7.938 42.93-19.82 60.65-34.97l46.72 26.98c2.557 1.477 5.416 2.203 8.246 2.203C455.3 431 499.5 349.1 499.5 332zM256 336c-44.11 0-80-35.89-80-80S211.9 176 256 176s80 35.89 80 80S300.1 336 256 336z"></path></svg></i></a>  
+  </div>
+  <div class="setting-menu">
+    <div class="setting">
+      <p>Font Size</p>
+      <input class="setting-value"  id="fontSize" name="font-size" type="number" min="10" max="30" step="1" value="16" onchange="changeFontSize()">
+    </div>
+    <div class="setting">
+      <p>Theme</p>
+      <select class="theme" data-live-search="true" name="Theme" id="theme" onchange="changeTheme()">
+        <option value="dracula" id="dracula">Dracula (Dark)</option>
+        <option value="monokai" id="monokai">Monokai - Sublime (Dark)</option>
+        <option value="chaos" id="chaos">Chaos (Dark)</option>
+        <option value="one_dark" id="one_dark">One (Dark)</option>
+        <option value="ambiance" id="ambiance" selected>Ambiance (Dark)</option>
+        <option value="textmate" id="textmate">Textmate (Light)</option>
+        <option value="solarized_light" id="solarized_light">Solarized (Light)</option>
+        <option value="github" id="github">Github (Light)</option>
+        <option value="tomorrow" id="tomorrow">Tomorrow (Light)</option>
+        <option value="xcode" id="xcode">Xcode (Light)</option>
+        <option value="kuroir" id="kuroir">Kuroir (Light)</option>
+      </select>
+    </div>
+    <div class="setting">
+      <p>Tab Size</p>
+      <select class="tab-size" name="tab-size" id="tab-size" onchange="changeTabSize()">
+        <option value="2" id="t2">2</option>
+        <option value="4" id="t4" selected>4</option>
+        <option value="6" id="t6">6</option>
+        <option value="8" id="t8">8</option>
+        <option value="10" id="t10">10</option>
+      </select>
+    </div>
+
+  </div>
+    <!-- Editor -->
+    <div class="editor-bg">
+      <pre id="editor"></pre>
+    </div>
+    <div class="code-bar bottom-bar">
+      <p class="input-heading">Input</p>
+      <p class="output-heading">Output</p>
+      <input type="checkbox" id="input-checkbox" name="custom-input" value="custom-input" onchange="toggleInput()">
+      <label for="input-checkbox"> Input </label>
+      <a class="editor-btn" onclick="runCode()">Run</a>
+    </div>
+    <div class="bottom-editor">
+      <pre id="tc-editor"></pre>
+      <pre id="op-editor"></pre>
+    </div>
+  </div>
+  </div>
+  <!-- /.container -->
+  <!-- Required Libraries -->
+    <script src="/lib/ace/src/ace.js"></script>
+    <script src="/lib/ace/src/ext-language_tools.js"></script>
+    <script src="/lib/ace/src/ext-beautify.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+    <!-- User Libraries  -->
+    <script src="/js/app.js"></script>
+    <script>
+        let code = `<%-JSON.stringify(code)%>`;
+        let lang = `<%-JSON.stringify(lang)%>`;
+        code = code.slice(1,-1);
+        lang = lang.slice(1,-1);
+        console.log(code);
+        showCode(code,lang);
+
+    </script>
+</body>
+</html>
+

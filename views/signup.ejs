@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/styles/main.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/3Cydf3t/logo.png">
+    <title>Signup | CodeLive</title>
+  </head>
+  <body>
+    <div class="header"> <h2>Code<span>Live</span></h2></div>
+    <div class="container">
+    <form method="post" class="form-container" action="/signup">
+      <h2>SignUp</h2>
+      <input type="text" name="name" id="name" placeholder="Enter full name" required/>
+      <input type="email" name="email" id="email" placeholder="Enter email" required/>
+      <input type="text" name="username" id="username" placeholder="Create Username with alphabates and numbers" pattern="[A-Za-z0-9]+" minlength="4" required/>
+      <input type="password" name="password" id="password" placeholder="Create password" minlength="4" required/>
+      <button class="btn">SignUp</button>
+      <a class="btn" id="other-btn" href="/login">Login</a>
+      <p class="error"><%= error %></p>
+    </form>
+  </div>
+  </body>
+</html>

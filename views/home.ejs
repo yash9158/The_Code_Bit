@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/styles/main.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="icon" type="image/x-icon" href="https://i.ibb.co/3Cydf3t/logo.png">
+    <title>Home | CodeLive</title>
+  </head>
+  <body>
+    <div class="home-container">
+      <div class="header"> 
+        <h1 class="name"><i class="fas fa-user"></i> Hi <%=name %>!</h1>
+        <h2>Code<span>Live</span></h2>
+        <a class="btn" href="/home/logout"> Logout </a>   
+      </div>
+      <div class="card-container">
+        <a href = "/home/code">
+          <div class="code-card">
+              <i class="fas fa-plus" style="font-size: 50px; color: rgba(154, 255, 3, 0.849);"></i>
+            </div></a>
+        <% codes.forEach(c => { %>
+                    <div class="code-card" id = "<%= c.filename %>">
+                        <div class="card-top">
+                          <p class="code-lang"  onclick="goToCode('<%= c.filename %>')"><%=c.lang%></p> 
+                          <a onclick="deleteCard('<%= c.filename %>')"><i class="fas fa-trash"></i></a>
+                        </div>
+                          <div class="code-text"  onclick="goToCode('<%= c.filename %>')"><%=c.code.slice(0,90)%></div>
+                          <div class="card-bottom"  onclick="goToCode('<%= c.filename %>')" >
+                            <p class="card-name"><%=c.filename%></p>
+                            </div>
+                          </div>
+          <% });%>
+      </div>
+      <script>
+        function post(path, params, method='post') {
+
+            // The rest of this code assumes you are not using a library.
+            // It can be made less verbose if you use one.
+            const form = document.createElement('form');
+            form.method = method;
+            form.action = path;
+
+            for (const key in params) {
+              if (params.hasOwnProperty(key)) {
+                const hiddenField = document.createElement('input');
+                hiddenField.type = 'hidden';
+                hiddenField.name = key;
+                hiddenField.value = params[key];
+
+                form.appendChild(hiddenField);
+              }
+            }
+
+            document.body.appendChild(form);
+            form.submit();
+            }
+        function deleteCard(name)
+        {
+          post('/home/delete', {filename: name});
+        }
+        function goToCode(name)
+        {
+          post('/home/code', {file: name},'get');
+        }
+      </script>
+  </body>
+</html>
